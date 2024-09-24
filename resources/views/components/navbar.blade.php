@@ -12,20 +12,26 @@
         <li class="nav-item">
           <a class="nav-link" href="{{route('articles')}}">I nostri articoli</a>
         </li>
+        @auth
         <li class="nav-item">
           <a class="nav-link" href="#">Crea articolo</a>
         </li>
+        @endauth
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
             Benvenuto/a
           </a>
           <ul class="dropdown-menu">
+            @guest
             <li><a class="dropdown-item" href="{{route('register')}}">Registrati</a></li>
             <li><a class="dropdown-item" href="{{route('login')}}">Accedi</a></li>
+            @endguest
             <li><hr class="dropdown-divider"></li>
+            @auth
             <li>
               <form class="dropdown-item btn logout" href="#" method="POST" action="{{route('logout')}}"> @csrf <button class="btn logout nav-link" type="submit">Esci</button></form>
             </li>
+            @endauth
           </ul>
         </li>
       </ul>
